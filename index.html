@@ -21,7 +21,7 @@
         }
         .update-frame {
             max-width: 600px;
-            margin: 0 auto 30px auto;
+            margin: 0 auto 20px auto;
             padding: 20px;
             background: #fff;
             border: 1px solid #ccc;
@@ -35,28 +35,36 @@
             border-bottom: 1px solid #eee;
             padding-bottom: 8px;
         }
-        .update-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
+        .link-container {
+            margin: 20px 0;
         }
-        .update-list li {
-            padding: 6px 0;
-            border-bottom: 1px dashed #eee;
-            font-size: 0.95rem;
-        }
-        .update-list li:last-child {
-            border-bottom: none;
-        }
-        .update-date {
+        .btn-demo {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #333;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
             font-weight: bold;
-            margin-right: 10px;
-            color: #666;
+            transition: background-color 0.2s;
+        }
+        .btn-demo:hover {
+            background-color: #555;
+        }
+        .text-link-container {
+            margin: 15px 0;
+        }
+        .text-link-container a {
+            color: #0066cc;
+            text-decoration: underline;
+        }
+        .text-link-container a:hover {
+            color: #004499;
         }
         footer {
             font-size: 0.9rem;
             color: #666;
-            margin-top: 20px;
+            margin-top: 30px;
         }
     </style>
 </head>
@@ -66,16 +74,38 @@
         <img src="ideologica.png" alt="IDEOLOGICA" class="top-image">
     </div>
 
-    <div class="update-frame">
+    <div class="update-frame" id="update-container">
         <h2>更新履歴</h2>
-        <ul class="update-list">
-            <li><span class="update-date">2026-10-05</span>サイトを開設しました。</li>
-        </ul>
+        <div id="update-content">読み込み中...</div>
+    </div>
+
+    <div class="link-container">
+        <a href="https://umemoto.booth.pm/items/8945122" class="btn-demo" target="_blank" rel="noopener noreferrer">DEMO版</a>
+    </div>
+
+    <div class="text-link-container">
+        <a href="https://wavebox.me/wave/ahhj6ytazu72pm9m/" target="_blank" rel="noopener noreferrer">wavebox</a>
     </div>
 
     <footer>
         著作 我楽他や
     </footer>
+
+    <script>
+        fetch('update.html')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('更新履歴の読み込みに失敗しました');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('update-content').innerHTML = data;
+            })
+            .catch(error => {
+                document.getElementById('update-content').innerHTML = '<p>更新履歴を読み込めませんでした。</p>';
+            });
+    </script>
 
 </body>
 </html>
