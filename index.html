@@ -74,7 +74,7 @@
         }
         .slider-container {
             max-width: 600px;
-            margin: 20px auto;
+            margin: 20px auto 0 auto;
             overflow: hidden;
             position: relative;
             background: #000;
@@ -95,6 +95,7 @@
         }
         .slider-nav {
             margin-top: 10px;
+            margin-bottom: 30px;
         }
         .slider-nav button {
             background: #333;
@@ -130,7 +131,7 @@
     <div class="synopsis-frame">
         <h2>あらすじ</h2>
         <p style="margin: 0; line-height: 1.6; font-size: 0.95rem;">
-            ここにゲームのあらすじテキストが入ります。
+            デスゲームに参加して法定制定権を得よう☆
         </p>
     </div>
 
@@ -292,7 +293,6 @@
     </footer>
 
     <script>
-        // 更新履歴読み込み
         fetch('update.html')
             .then(response => {
                 if (!response.ok) {
@@ -307,9 +307,8 @@
                 document.getElementById('update-content').innerHTML = '<p>更新履歴を読み込めませんでした。</p>';
             });
 
-        // スライドショー簡易制御
         let currentSlide = 0;
-        const totalSlides = 3; // 画像枚数に合わせて変更
+        const totalSlides = 3;
         function moveSlide(direction) {
             const track = document.getElementById('sliderTrack');
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
