@@ -15,11 +15,12 @@
             color: #333;
         }
         .top-image {
-            max-width: 100%;
+            max-width: 400px;
+            width: 100%;
             height: auto;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
-        .update-frame {
+        .update-frame, .synopsis-frame, .readme-frame {
             max-width: 600px;
             margin: 0 auto 20px auto;
             padding: 20px;
@@ -29,11 +30,21 @@
             text-align: left;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .update-frame h2 {
+        .update-frame h2, .synopsis-frame h2, .readme-frame summary {
             margin-top: 0;
             font-size: 1.2rem;
             border-bottom: 1px solid #eee;
             padding-bottom: 8px;
+            cursor: pointer;
+        }
+        .readme-frame details {
+            text-align: left;
+        }
+        .readme-content {
+            margin-top: 15px;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
         .link-container {
             margin: 20px 0;
@@ -61,6 +72,39 @@
         .text-link-container a:hover {
             color: #004499;
         }
+        .slider-container {
+            max-width: 600px;
+            margin: 20px auto;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+            border-radius: 4px;
+        }
+        .slider-track {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+        .slide-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .slide-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .slider-nav {
+            margin-top: 10px;
+        }
+        .slider-nav button {
+            background: #333;
+            color: #fff;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin: 0 5px;
+        }
         footer {
             font-size: 0.9rem;
             color: #666;
@@ -74,13 +118,169 @@
         <img src="ideologica.png" alt="IDEOLOGICA" class="top-image">
     </div>
 
+    <div class="link-container">
+        <a href="https://umemoto.booth.pm/items/8945122" class="btn-demo" target="_blank" rel="noopener noreferrer">DEMO版</a>
+    </div>
+
     <div class="update-frame" id="update-container">
         <h2>更新履歴</h2>
         <div id="update-content">読み込み中...</div>
     </div>
 
-    <div class="link-container">
-        <a href="https://umemoto.booth.pm/items/8945122" class="btn-demo" target="_blank" rel="noopener noreferrer">DEMO版</a>
+    <div class="synopsis-frame">
+        <h2>あらすじ</h2>
+        <p style="margin: 0; line-height: 1.6; font-size: 0.95rem;">
+            ここにゲームのあらすじテキストが入ります。
+        </p>
+    </div>
+
+    <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slide-item"><img src="ideologica.png" alt="紹介画像1"></div>
+            <div class="slide-item"><img src="ideologica.png" alt="紹介画像2"></div>
+            <div class="slide-item"><img src="ideologica.png" alt="紹介画像3"></div>
+        </div>
+    </div>
+    <div class="slider-nav">
+        <button onclick="moveSlide(-1)">前へ</button>
+        <button onclick="moveSlide(1)">次へ</button>
+    </div>
+
+    <div class="readme-frame">
+        <details>
+            <summary>README</summary>
+            <div class="readme-content">□ゲームについて
+
+◆タイトル
+ イデオロギカ
+ 略称：今のところ、なし
+
+◆ジャンル
+ デスゲームADV、デスゲームノベルゲーム
+
+◆キャッチコピー
+ 「デスゲームを勝ち残り、法律制定権を得てプライムなスターになっちゃおう☆」
+
+◆ゲーム内容
+ 「みなさんにはデスゲームにご参加頂きます」
+
+ あなたはデスゲームに参加することになりました。
+
+◆プレイ時間
+ 体験版 (DEMO) ：30分〜
+
+ 製品版の全クリアは現実的では有りません。 
+
+◆対象
+ 年齢：15歳以上
+
+□購入にあたって
+
+◆注意事項
+ このゲームは15歳以上の方向けのゲームです。 
+ 15歳未満の方のゲームプレイは想定しておりません。
+
+◆15歳以上向けの事由
+ デスゲームであるため。
+ また、性的な描写やグロテスクな描写が含まれるため。
+
+◆免責事項
+ ゲームプレイ後に気分を害したり心身の不良につながる恐れがあります。
+ ご自身の判断でゲームを中断願います。 
+
+◆注意事項
+ この作品はフィクションです。
+ 実在の人物や団体などとは一切関係ありません。
+
+ 作品に登場する人物、団体や事件などは全て架空のものであり、実在のものとは一切関係ありません。
+ また、犯罪を推奨・肯定する意図はありません。
+
+ 当作品の無断転載、改変、二次配布は固くお断りします。
+
+ 当ソフトウェアをプレイ、ダウンロードしたことで生じたいかなる損害やトラブル、不利益に対しても製作者は一切責任を負えません。
+
+◆AI使用
+ AIをコーディング補助ツールとして使用しています。
+
+□ガイドライン
+
+◆ゲーム実況について
+ 全編実況可能ですが、成人向けで適さないシーンかどうかの判断(実況やプレイ動画を投稿する際の判断)はご自身の責任で行ってください。
+
+ 投稿先のガイドラインを遵守し、このゲームが未成年に不適切である旨を記載して下さい。
+
+ 全ての確認をご自身で行い、判断して下さい。
+
+ 実況やプレイ動画を仮に投稿する際は概要欄に以下を記入していただけると助かります。
+
+✖✖✖-----   
+ イデオロギカ
+ https://umemotoraku.github.io/ideologica/index
+ 作者：梅本らく 我楽他や     -----✖✖✖
+
+◆禁止事項
+ このゲームに関する内容で、第三者の権利を害する行為や誹謗中傷などの迷惑行為を行わないでください
+
+◆二次創作について
+ 二次創作はご自由にどうぞ。
+
+ 非公式、ファンメイドと分かる表記ならグッズ販売もしていただけます。
+
+◆翻訳やパッチ
+ ユーザー間で翻訳やパッチの交換や流布、例えば英語に訳するまたはキャラクターの二次創作した立ち絵を作って配布し、キャラクターの立ち絵を差し替えるなどはかまいません。
+
+ ただし、ゲーム本編のいかなるデータも無断で再配布しないでください。
+
+ 有償二次配布を行った場合は作者へ利益を分配することに同意したとみなします。
+
+ ご注意ください。
+
+□その他
+
+◆クレジット
+ Made with Ren'py
+
+ 開発：梅本らく 我楽他や
+
+◆連絡先
+ garakutaya.raku✖gmail.com (ゲーム関連)
+ umemoto.raku✖gmail.com (その他)
+
+□感想について
+
+◆wavebox
+ https://wavebox.me/wave/ahhj6ytazu72pm9m/
+
+◆作者はエゴサしません。
+ 作者が反応してしまうと「いいね漏れ」「あの人には反応したのに」などで不適切な状態を招いてしまうためです。
+
+ #イデオロギカ (感想用)
+
+ 上記のハッシュタグはユーザー間で作品の感想や二次創作を探すためのものであり、作者は巡回いたしません。
+
+◆エラーが発生しました(Ren'py)
+ この表示がでた場合、お手数ですがリプライでスクショを送っていただければ対応します。
+ (もちろん任意です)
+
+ @ume_bfsh ←ここ
+
+◆オリジナルデスゲームの使用について
+ オリジナルデスゲームはすべて完全自作(※1)であり、著作権は ummt(梅本らく) に帰属します。
+ 二次創作や夢小説、オリキャラ同士の対戦など、ご自由にご利用いただけます。 
+
+ ただし、有償での再配布をされたい場合はご連絡下さい。
+
+ @ume_bfsh ←ここ
+
+ ルールを引用・改造すること自体は自由ですが、著作権者を偽る形での利用はできません。
+
+ ※1 最終裁定、トーテムデッキの案についてはAIが誤出力したハルシネーション(ルールが破綻していたもの)を再構築していちから作り直したものになります
+   (詳しくはゲーム内の説明をご確認ください)
+ 
+ AIに案だしや提案などルールやロジックに口出しは一切合切させていませんが、指示なく勝手に出されたものはしょうがないです。 
+
+ せっかく生まれた案、もったいない。</div>
+        </details>
     </div>
 
     <div class="text-link-container">
@@ -92,6 +292,7 @@
     </footer>
 
     <script>
+        // 更新履歴読み込み
         fetch('update.html')
             .then(response => {
                 if (!response.ok) {
@@ -105,6 +306,15 @@
             .catch(error => {
                 document.getElementById('update-content').innerHTML = '<p>更新履歴を読み込めませんでした。</p>';
             });
+
+        // スライドショー簡易制御
+        let currentSlide = 0;
+        const totalSlides = 3; // 画像枚数に合わせて変更
+        function moveSlide(direction) {
+            const track = document.getElementById('sliderTrack');
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        }
     </script>
 
 </body>
